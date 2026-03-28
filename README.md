@@ -136,7 +136,7 @@ Ikuti langkah berikut:
 ```bash
 git clone https://github.com/DanxyOfficial/DanxyZsh-Ai
 cd DanxyZsh-AI
-bash install.sh
+make run
 ```
 
 ## TUTORIAL VIDEO:
