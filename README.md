@@ -42,7 +42,7 @@ Prompt dirancang dengan struktur jelas dan informatif.
 **Komponen:**
 - Username & Host
 - Current Directory (Smart Path)
-- Timestamp / Indicator
+- Indicator
 - Exit Status Command
 
 **Contoh:**
