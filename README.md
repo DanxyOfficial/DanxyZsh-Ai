@@ -1,4 +1,4 @@
-# ⚡ DanxyZsh-AI
+# ⚡ Style Termux Intregrasi AI DanxyZsh-AI 2026
 
 **DanxyZsh-AI** adalah environment ZSH khusus untuk Termux yang menggabungkan **tampilan modern, efisiensi CLI, dan integrasi AI** dalam satu sistem.
 
