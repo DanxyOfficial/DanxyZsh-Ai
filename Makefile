@@ -1,6 +1,6 @@
-.PHONY: all deps install
+.PHONY: all deps install run
 
-all: deps install
+run: deps install
 
 deps:
 	@echo "[*] Updating repository..."
@@ -15,7 +15,9 @@ deps:
 	@gem install lolcat
 
 	@echo "[✓] Dependencies installed"
-
-install:
+	
+run:
+	@echo "[*] Pulling latest version..."
+	@git pull origin main
 	@echo "[*] Running installer..."
 	@bash install.sh
