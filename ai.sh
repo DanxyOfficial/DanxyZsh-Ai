@@ -8,7 +8,6 @@
 # Hormati hak cipta dan karya orang lain. DanxyZsh-Ai ini GRATIS,
 # dilarang menjual atau memperjualbelikan.
 
-
 if [ $# -eq 0 ]; then
     echo "Error: Mana pertanyaannya? contoh penggunaan: ai hai"
     exit 1
