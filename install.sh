@@ -104,9 +104,7 @@ done
 
 echo "NAME=\"$USERNAME\"" > "$BASE_DIR/config/username"
 ok "Username diset: $USERNAME"
-
 info "Installing config..."
-
 cp "$BASE_DIR/config/zshrc" "$HOME/.zshrc"
 cp "$BASE_DIR/config/username" "$HOME/.username"
 cp "$BASE_DIR/config/banner.sh" "$HOME/.banner"
