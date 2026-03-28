@@ -1,14 +1,13 @@
 #!/bin/bash
-cat << EOF
-CREATOR: DANXY OFFICIAL × PECUT AI
-SALURAN: https://whatsapp.com/channel/0029VaznZlq7z4kW00unHZ0e
-WEBSITE: danxyofficial.web.id
-YOUTUBE: DanxyBot
-TIKTOK: Qwela.38
-NB: Dilarang keras menghapus atau mengubah credit/nama creator.
-Hormati hak cipta dan karya orang lain. DanxyZsh-Ai ini GRATIS,
-dilarang menjual atau memperjualbelikan.
-EOF
+# CREATOR: DANXY OFFICIAL × PECUT AI
+# SALURAN: https://whatsapp.com/channel/0029VaznZlq7z4kW00unHZ0e
+# WEBSITE: danxyofficial.web.id
+# YOUTUBE: DanxyBot
+# TIKTOK: Qwela.38
+# NB: Dilarang keras menghapus atau mengubah credit/nama creator.
+# Hormati hak cipta dan karya orang lain. DanxyZsh-Ai ini GRATIS,
+# dilarang menjual atau memperjualbelikan.
+
 
 if [ $# -eq 0 ]; then
     echo "Error: Mana pertanyaannya? contoh penggunaan: ai hai"
