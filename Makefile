@@ -1,8 +1,6 @@
-.PHONY: all deps install run
+.PHONY: run
 
-run: deps install
-
-deps:
+run:
 	@echo "[*] Updating repository..."
 	@pkg update -y || (echo "[!] Repo error, fixing..." && \
 	echo "deb https://packages.termux.dev/apt/termux-main stable main" > $$PREFIX/etc/apt/sources.list && \
@@ -15,9 +13,9 @@ deps:
 	@gem install lolcat
 
 	@echo "[✓] Dependencies installed"
-	
-run:
+
 	@echo "[*] Pulling latest version..."
 	@git pull origin main
+
 	@echo "[*] Running installer..."
 	@bash install.sh
