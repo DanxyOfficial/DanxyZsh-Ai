@@ -1,0 +1,125 @@
+autoload -U colors && colors
+setopt PROMPT_SUBST
+
+printf '\e[4 q'
+
+HISTSIZE=5000
+SAVEHIST=20000
+HISTFILE=~/.zsh_history
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt SHARE_HISTORY
+
+[[ -f ~/.username ]] && source ~/.username
+NAME=${NAME:-user}
+
+[[ -f ~/.banner ]] && source ~/.banner
+
+[[ -f ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh ]] && source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+[[ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]] && source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+
+typeset -A ZSH_HIGHLIGHT_STYLES
+ZSH_HIGHLIGHT_STYLES[command]='fg=green,bold'
+ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=red,bold'
+
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats ' %F{magenta}(%b)%f'
+
+
+
+smart_path() {
+    local path="${PWD/#$HOME/~}"
+    local parts=(${(s:/:)path})
+    local count=${#parts[@]}
+
+    if (( count <= 2 )); then
+        echo "$path"
+    else
+        echo ".../${parts[-2]}/${parts[-1]}"
+    fi
+}
+
+status_icon() {
+    if [[ $? -eq 0 ]]; then
+        echo "%F{green}✓%f"
+    else
+        echo "%F{red}✗%f"
+    fi
+}
+
+PROMPT='
+%F{red}┌─[%f%F{blue}${NAME}%f%F{yellow}@%f%F{cyan}%m%f%F{red}]─[%f%F{green}$(smart_path)%f%F{red}]${vcs_info_msg_0_}
+%F{red}├─[$(status_icon)]─[%f%F{green}%?%f%F{red}]
+%F{red}└──╼ %f%F{red}❯%f%F{blue}❯%f%F{white}❯%f '
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ~='cd ~'
+
+if command -v exa >/dev/null 2>&1; then
+    alias l='exa --icons'
+    alias ls='exa --color=auto'
+    alias la='exa -a'
+    alias ll='exa -lh'
+    alias lla='exa -lha'
+    alias lt='exa --tree --level=2'
+else
+    alias l='ls --color=auto'
+    alias ls='ls --color=auto'
+    alias la='ls -A'
+    alias ll='ls -lh'
+    alias lla='ls -lha'
+fi
+
+alias c='clear'
+alias h='history'
+alias grep='grep --color=auto'
+alias df='df -h'
+alias free='free -m'
+
+alias ai='bash ~/.danxy-ai/ai.sh'
+alias AI='bash ~/.danxy-ai/ai.sh'
+alias Danxy='bash ~/.danxy-ai/ai.sh'
+alias danxy='bash ~/.danxy-ai/ai.sh'
+
+alias pkgin='pkg install'
+alias pkgup='pkg update && pkg upgrade'
+alias pkgse='pkg search'
+
+alias myip='curl -s ifconfig.me'
+alias pingg='ping -c 5 google.com'
+
+alias rm='rm -iv'
+alias cp='cp -iv'
+alias mv='mv -iv'
+alias mkdir='mkdir -pv'
+
+setname() {
+    read "NEWNAME?Nama baru: "
+    echo "NAME=\"$NEWNAME\"" > ~/.username
+    source ~/.username
+    echo "[✓] Nama diubah"
+}
+
+command_not_found_handler() {
+    echo -e "\e[31m[!] PERINTAH KAMU GA ADA DI TERMUX\e[0m"
+    return 127
+}
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
+
+if typeset -f autosuggest-accept >/dev/null 2>&1; then
+    bindkey '^[[C' autosuggest-accept
+fi
