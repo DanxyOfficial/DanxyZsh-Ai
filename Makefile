@@ -1,5 +1,4 @@
 .PHONY: run
-
 run:
 	@echo "[*] Updating repository..."
 	@pkg update -y || (echo "[!] Repo error, fixing..." && \
