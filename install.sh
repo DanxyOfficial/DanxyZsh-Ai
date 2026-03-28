@@ -110,6 +110,7 @@ info "Installing config..."
 cp "$BASE_DIR/config/zshrc" "$HOME/.zshrc"
 cp "$BASE_DIR/config/username" "$HOME/.username"
 cp "$BASE_DIR/config/banner.sh" "$HOME/.banner"
+touch "$HOME/.hushlogin"
 
 chmod +x "$HOME/.banner"
 ok "Config installed"
