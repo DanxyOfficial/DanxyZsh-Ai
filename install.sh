@@ -34,9 +34,6 @@ echo
 
 BASE_DIR="$(cd "$(dirname "$0")" && pwd)"
 
-# ==============================
-# TERMUX UI SETUP
-# ==============================
 setup_termux_ui() {
     info "Setting Termux UI..."
 
@@ -59,9 +56,6 @@ EOF
 
 setup_termux_ui
 
-# ==============================
-# PLUGINS
-# ==============================
 info "Setting up plugins..."
 
 mkdir -p "$HOME/.zsh"
@@ -80,9 +74,6 @@ else
     ok "zsh-syntax-highlighting already exist"
 fi
 
-# ==============================
-# FONT
-# ==============================
 info "Installing ASCII font..."
 
 curl -L https://raw.githubusercontent.com/DanxyOfficial/DanxyZsh/refs/heads/DanxyZsh/.object/ASCII-Shadow.flf \
@@ -91,9 +82,6 @@ curl -L https://raw.githubusercontent.com/DanxyOfficial/DanxyZsh/refs/heads/Danx
 chmod 644 $PREFIX/share/figlet/ASCII-Shadow.flf
 ok "Font installed"
 
-# ==============================
-# USER INPUT
-# ==============================
 echo
 bannerZsh
 printf "${G} ┏━[ ${R}MASUKAN NAMA KAMU${X} ${G}]${Y}@termux${G} ~ ${R}[DanxyZsh-AI]${G}\n ┗━━❯❯❯ "
