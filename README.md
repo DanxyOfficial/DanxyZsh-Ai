@@ -135,7 +135,7 @@ Ikuti langkah berikut:
 
 ```bash
 git clone https://github.com/DanxyOfficial/DanxyZsh-Ai
-cd DanxyZsh-AI
+cd DanxyZsh-Ai
 make run
 ```
 
